@@ -6,6 +6,7 @@ import transaction.authorizer.model.transaction.Transaction;
 import transaction.authorizer.service.Authorizer;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class AccountService {
         return accounts.get(index);
     }
 
-    public List<Account> getAccounts() {
+    public Collection<Account> getAccounts() {
         return accounts;
     }
 
