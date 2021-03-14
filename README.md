@@ -19,7 +19,7 @@ The program receives `json` lines as inputs that are read from `operations` file
 Let's talk about the structure or architecture of the application.
 The project has been separated into the following layers:
 
-1. <b>User interface (UI)</b> includes the use of terminal panel for displaying transaction outputs.
-2. <b>Consumer</b> receives and handles transaction events.
-3. <b>Services</b> process transaction events by applying a set of predefined rules,and produce an output for each event.
-4. <b>Models</b> represent the domain that we're using within the system (e.g., `Account`, and `Transaction`).
+1. <b>Main Application</b> (AuthorizerApplication) starts application, and setups input and output files.
+2. <b>Consumers</b> receive and handle transaction events.
+3. <b>Services</b> process transaction events by applying a set of predefined rules, and producing an output for each event.
+4. <b>Models</b> represent the domain that we're using within the application (e.g., `Account`, and `Transaction`).
