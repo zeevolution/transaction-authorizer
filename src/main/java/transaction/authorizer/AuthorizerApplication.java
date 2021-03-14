@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 public class AuthorizerApplication {
 
     public static void main(String[] args) {
-
         final AuthorizerConsumer authorizerConsumer = AuthorizerConsumer.getInstance();
 
         authorizerConsumer.processAccount(true, 500);
