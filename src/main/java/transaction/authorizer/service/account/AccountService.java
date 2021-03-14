@@ -44,7 +44,7 @@ public class AccountService {
     private String output() {
         return "{\"account\": {\"active-card\": " + getAccount(0).isActiveCard()
                 + ", \"available-limit\": " + getAccount(0).getAvailableLimit()
-                + "}, \"violations\": " + violations.toString() + "}";
+                + "}, \"violations\": " + violations.toString() + "}\n";
     }
 
     private final Authorizer authorizer = new Authorizer() {

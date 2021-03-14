@@ -44,7 +44,7 @@ public class TransactionService {
     private String output(final Account account, final int availableLimit) {
         return "{\"account\": {\"active-card\": " + account.isActiveCard()
                 + ", \"available-limit\": " + availableLimit
-                + "}, \"violations\": " + violations.toString() + "}";
+                + "}, \"violations\": " + violations.toString() + "}\n";
     }
 
     private final Authorizer authorizer = new Authorizer() {

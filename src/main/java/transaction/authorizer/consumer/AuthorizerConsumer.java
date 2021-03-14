@@ -18,12 +18,18 @@ public class AuthorizerConsumer {
 
     public static AuthorizerConsumer getInstance() { return INSTANCE; }
 
-    public void processAccount(final boolean activeCard, final int availableLimit) {
-        System.out.println(accountService.processAccount(activeCard, availableLimit));
+    public String processAccount(final boolean activeCard, final int availableLimit) {
+        final String output = accountService.processAccount(activeCard, availableLimit);
+
+        System.out.print(output);
+        return output;
     }
 
-    public void processTransaction(final String merchant, final int amount, final ZonedDateTime time) {
+    public String processTransaction(final String merchant, final int amount, final ZonedDateTime time) {
         final Account account = accountService.getAccounts().isEmpty() ? null : accountService.getAccount(0);
-        System.out.println(transactionService.processTransaction(account, merchant, amount, time));
+        final String output = transactionService.processTransaction(account, merchant, amount, time);
+
+        System.out.print(output);
+        return output;
     }
 }
