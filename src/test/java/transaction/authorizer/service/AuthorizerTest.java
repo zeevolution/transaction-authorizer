@@ -134,7 +134,7 @@ public class AuthorizerTest {
 
         // Act
         final boolean actualResult = authorizer.applyDoubledTransactionRule(buildTransaction(100),
-                new LinkedList<>(Arrays.asList(buildTransaction(100))));
+                new LinkedList<>(Collections.singletonList(buildTransaction(100))));
 
         // Assert
         Assertions.assertEquals(expectedResult, actualResult);

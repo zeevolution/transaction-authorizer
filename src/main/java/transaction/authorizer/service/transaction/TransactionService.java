@@ -14,6 +14,8 @@ public class TransactionService {
     private static final TransactionService INSTANCE = new TransactionService();
     private static final BinaryOperator<Integer> SUBTRACT_LIMIT = (limit, amount) -> limit - amount;
 
+    private static final String INSUFFICIENT_LIMIT_RULE = "insufficient-limit";
+
     private final LinkedList<Transaction> transactions = new LinkedList<>();
     private final LinkedList<String> violations = new LinkedList<>();
     private int currentAvailableLimit = 0;
@@ -34,7 +36,8 @@ public class TransactionService {
             }
 
             final String transactionOutput = output(account,
-                    transactions.isEmpty() ? account.getAvailableLimit() : currentAvailableLimit);
+                    transactions.isEmpty() && violations.contains(INSUFFICIENT_LIMIT_RULE)
+                            ? account.getAvailableLimit() : currentAvailableLimit);
 
             violations.clear();
             return transactionOutput;
@@ -51,7 +54,8 @@ public class TransactionService {
         @Override
         public boolean authorize(final Account account, final Transaction transaction,
                                  final LinkedList<Transaction> transactions) {
-            final int availableLimit = transactions.isEmpty() ? account.getAvailableLimit() : currentAvailableLimit;
+            final int availableLimit = transactions.isEmpty()
+                    ? account.getAvailableLimit() : currentAvailableLimit;
             boolean shouldAuthorize = true;
 
             if (this.applyCardNotActiveRule(account)) {
@@ -60,7 +64,7 @@ public class TransactionService {
             }
 
             if (this.applyInsufficientLimitRule(availableLimit, transaction)) {
-                violations.add("insufficient-limit");
+                violations.add(INSUFFICIENT_LIMIT_RULE);
                 shouldAuthorize = false;
             }
 
