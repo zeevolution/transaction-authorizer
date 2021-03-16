@@ -35,6 +35,11 @@ The application reads all transaction inputs inside `"/src/main/java/resources/o
 If you want to test application against other transaction inputs, feel free to change 
 content inside `"/src/main/java/resources/operations"`, and re-run application.
 
+#### 4. Run via Intellij
+You may run the project by executing `AuthorizerApplication` via Intellij as follows:
+
+![Authorizer_Intellij](/docs/authorizer_intellij.gif)
+
 ## Application Architecture
 
 Let's talk about the structure or architecture of the application.
